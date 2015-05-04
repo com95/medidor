@@ -13,16 +13,26 @@ import java.util.Vector;
  * @author Yuli
  */
 public class Modelo {
+    private int codigoModelo;
     private String nombreModelo;
     private Vector <Caracteristica> carateristicas;
 
     public Modelo() {
-        this("NULL", null);
+        this(-1, "NULL", null);
     }
 
-    public Modelo(String nombreModelo, Vector<Caracteristica> carateristicas) {
+    public Modelo(int codigoModelo, String nombreModelo, Vector<Caracteristica> carateristicas) {
+        this.codigoModelo = codigoModelo;
         this.nombreModelo = nombreModelo;
         this.carateristicas = carateristicas;
+    }
+
+    public int getCodigoModelo() {
+        return codigoModelo;
+    }
+
+    public void setCodigoModelo(int codigoModelo) {
+        this.codigoModelo = codigoModelo;
     }
 
     public String getNombreModelo() {
@@ -40,6 +50,8 @@ public class Modelo {
     public void setCarateristicas(Vector<Caracteristica> carateristicas) {
         this.carateristicas = carateristicas;
     }
+
+        
     
     
 }
