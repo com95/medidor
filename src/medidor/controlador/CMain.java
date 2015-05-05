@@ -31,6 +31,7 @@ public class CMain implements IMain{
     public CMain()
     {
         ventanaPrincipal = new UIMain(this);
+        p = new Vector <Parametro>();
     }
     
     public void mostrarDescripcion(JList jlist, JTextArea jtextarea)
@@ -91,13 +92,14 @@ public class CMain implements IMain{
         BufferedReader br4 = null;
         BufferedReader br5 = null;
         BufferedReader br6 = null;
+        
         try {
             
             archivo1 = new File ("resultado_GA.csv");
             archivo2 = new File ("resultado_GC.csv");
             archivo3 = new File ("resultado_MA.xls");
             archivo4 = new File ("resultado_KW.xls");
-            archivo5 = new File ("resultado_SM.csv");
+            archivo5 = new File ("resultado_SM.xml");
             archivo6 = new File ("resultado_SQ.xls");
             
             fr1 = new FileReader (archivo1);
@@ -114,7 +116,82 @@ public class CMain implements IMain{
             br5 = new BufferedReader(fr5);
             br6 = new BufferedReader(fr6);
             
+            /* GA*/
+            String linea1;
+            Vector <String> Efiles = new Vector <String>();
+            while((linea1 = br1.readLine()) != null)
+            {
+                String tok = "a";
+                int fin = linea1.lastIndexOf(",");
+                if(linea1.length() > 6)
+                {
+                    if(linea1.substring(fin - 5, fin).equals(".java"))
+                    {
+                        linea1 = linea1.substring(0, fin);
+                        int fin2 = linea1.lastIndexOf(",");
+                        tok = linea1.substring(fin2 + 1, linea1.length());
+                        
+                        boolean rep = true;
+                        
+                        for(int i = 0; i < Efiles.size(); i++)
+                        {
+                            if(Efiles.get(i).equals(tok))
+                                rep = false;
+                        }
+                        
+                        if(rep)
+                            Efiles.add(tok);
+                    }
+                }
+            }
+
+            p.add(new Parametro(1, Efiles.size()));
             
+            /* SM*/
+            
+            String linea5;
+            int count = 0;
+            while((linea5 = br5.readLine()) != null)
+            {
+                if(count == 27)
+                {
+                    linea5 = linea5.substring(linea5.indexOf("checkpoint_files") + 18, linea5.length() - 2);
+                    p.add(new Parametro(2, Integer.parseInt(linea5)));
+                }
+                
+                if(count == 29)
+                {
+                    linea5 = linea5.substring(linea5.indexOf("M0") + 4, linea5.lastIndexOf("<"));
+                    p.add(new Parametro(3, Integer.parseInt(linea5)));
+                }
+                count++;
+            }
+            
+            /* GC */
+            
+            String linea2;
+            int count2 = 0;
+            
+            while((linea2 = br2.readLine()) != null)
+            {
+                if(count2 == 6)
+                {
+                    linea2 = linea2.substring(linea2.length() - 4, linea2.length());
+                    p.add(new Parametro(4, Double.parseDouble(linea2)));
+                }
+                
+                if(count2 == 61)
+                {
+                    linea2 = linea2.substring(linea2.lastIndexOf(",")+1, linea2.length());
+                    p.add(new Parametro(5, Integer.parseInt(linea2)));
+                }
+                
+                count2++;
+            }
+            
+            
+            
+            //jlist.getSelectedIndex();
             
    
         }

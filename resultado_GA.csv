@@ -1,11 +1,11 @@
-Audit violations for Tiendita at 05/05/15 02:46 AM
-
+Audit violations for Tiendita at 05/05/15 05:15 AM,,,,
+,,,,
 Description,Recommendations,Severity,Resource,Line
-Empty Catch Clause (3)
+Empty Catch Clause (3),,,,
 Empty catch clause for exception ex,Delete the empty catch clause.,Medium Severity,CVenta.java,Line 88
 Empty catch clause for exception ex,Delete the empty catch clause.,Medium Severity,ProductoDAO.java,Line 36
 Empty catch clause for exception e2,Delete the empty catch clause.,Medium Severity,ProductoDAO.java,Line 85
-Log Exceptions (8)
+Log Exceptions (8),,,,
 Caught exception not logged,Use one of the logging methods to log the exception.,Medium Severity,CAgregarProducto.java,Line 46
 Caught exception not logged,Use one of the logging methods to log the exception.,Medium Severity,CAgregarProducto.java,Line 63
 Caught exception not logged,Use one of the logging methods to log the exception.,Medium Severity,CVenta.java,Line 48
@@ -14,7 +14,7 @@ Caught exception not logged,Use one of the logging methods to log the exception.
 Caught exception not logged,Use one of the logging methods to log the exception.,Medium Severity,ProductoDAO.java,Line 36
 Caught exception not logged,Use one of the logging methods to log the exception.,Medium Severity,ProductoDAO.java,Line 76
 Caught exception not logged,Use one of the logging methods to log the exception.,Medium Severity,ProductoDAO.java,Line 85
-Unnecessary Import Declarations (12)
+Unnecessary Import Declarations (12),,,,
 Unnecessary import: import java.io.*;,Unnecessary import: null,Medium Severity,CAgregarProducto.java,Line 3
 Unnecessary import: import java.io.*;,Unnecessary import: null,Medium Severity,CVenta.java,Line 4
 Unnecessary import: import java.util.logging.Level;,Delete the import.,Medium Severity,CVenta.java,Line 7
