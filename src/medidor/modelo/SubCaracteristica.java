@@ -53,7 +53,7 @@ public class SubCaracteristica {
 
     public void toStrings()
     {
-        System.out.print("\t\tSubCaracteristica (" + codigoSubCaracteristica + ", " + nombreSubCaracteristica +  ")");
+        System.out.println("\t\tSubCaracteristica (" + codigoSubCaracteristica + ", " + nombreSubCaracteristica +  ")");
         for(int i = 0; i < metricas.size(); i++)
         {
             metricas.get(i).toStrings();

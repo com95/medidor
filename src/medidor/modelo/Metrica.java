@@ -26,9 +26,9 @@ public class Metrica {
 
     public Metrica() {
         this(-1, "NULL", "NULL", "NULL", "NULL", 0, false, "", 0, null);
+        this.parametros = new Vector <Parametro> ();
     }
-
-    
+ 
     
     public Metrica(int codigoMetrica, String nombreMetrica, String proposito, String escalaMedicion, String tipoMedida, double valor, boolean estado, String formula, double valorOptimo, Vector<Parametro> parametros) {
         this.codigoMetrica = codigoMetrica;
@@ -125,7 +125,7 @@ public class Metrica {
     
     public void toStrings()
     {
-        System.out.print("\t\t\tMetrica (" + codigoMetrica + ", " + nombreMetrica + ", " + escalaMedicion + ", " + tipoMedida + ", " + valor + ", " + estado + ", " + formula + ", " + valorOptimo + ")");
+        System.out.println("\t\t\tMetrica (" + codigoMetrica + ", " + nombreMetrica + ", " + escalaMedicion + ", " + tipoMedida + ", " + valor + ", " + estado + ", " + formula + ", " + valorOptimo + ")");
         for(int i = 0; i < parametros.size(); i++)
         {
             parametros.get(i).toStrings();

@@ -53,7 +53,7 @@ public class Caracteristica {
     
     public void toStrings()
     {
-        System.out.print("\tCaracteristica (" + codigoCaracteristica + ", " + nombreCaracteristica +  ")");
+        System.out.println("\tCaracteristica (" + codigoCaracteristica + ", " + nombreCaracteristica +  ")");
         for(int i = 0; i < subcaracteristicas.size(); i++)
         {
             subcaracteristicas.get(i).toStrings();
