@@ -21,7 +21,7 @@ public class UIMain extends javax.swing.JFrame {
     private IMain interfaceMain;
     
     public UIMain(IMain interfaceMain) {
-        this.getContentPane().setBackground(new java.awt.Color(215, 241, 133));
+        this.getContentPane().setBackground(new java.awt.Color(229, 255, 204));
         this.setTitle("MedA");
         this.setVisible(true);
         initComponents();
@@ -39,32 +39,66 @@ public class UIMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        cbxModelos = new javax.swing.JComboBox();
         btnOk = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Medidor de Calidad");
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/recursos/icon.png")).getImage());
 
-        jLabel1.setFont(new java.awt.Font("Source Sans Pro Semibold", 0, 18)); // NOI18N
-        jLabel1.setText("Medidor de Atributos");
+        jLabel1.setFont(new java.awt.Font("Cambria", 1, 34)); // NOI18N
+        jLabel1.setText("MEDIDOR DE CALIDAD");
 
-        cbxModelos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Modelo ISO 9126", "Modelo McCall", "Modelo Peruano" }));
+        btnOk.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        btnOk.setForeground(new java.awt.Color(0, 102, 204));
+        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/A2.png"))); // NOI18N
+        btnOk.setText("EVALUAR");
+        btnOk.setBorder(null);
+        btnOk.setBorderPainted(false);
+        btnOk.setContentAreaFilled(false);
+        btnOk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOk.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnOk.setIconTextGap(-3);
+        btnOk.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/A3.png"))); // NOI18N
+        btnOk.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/A1.png"))); // NOI18N
+        btnOk.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnOk.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        btnOk.setText("OK");
+        jList1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jList1.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Modelo ISO 9126", "Modelo McCall", "Modelo Peruano" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel2.setText("Seleccione un estandar de calidad:");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(105, 105, 105)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addComponent(cbxModelos, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2)
+                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnOk)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,10 +106,15 @@ public class UIMain extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbxModelos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnOk, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnOk))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -86,7 +125,11 @@ public class UIMain extends javax.swing.JFrame {
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOk;
-    private javax.swing.JComboBox cbxModelos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JList jList1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
