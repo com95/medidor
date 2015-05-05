@@ -53,7 +53,7 @@ public class Modelo {
 
     public void toStrings()
     {
-        System.out.println("Modelo (" + codigoModelo + ", " + nombreModelo +  ")");
+        System.out.print("Modelo (" + codigoModelo + ", " + nombreModelo +  ")");
         for(int i = 0; i < caracteristicas.size(); i++)
         {
             caracteristicas.get(i).toStrings();

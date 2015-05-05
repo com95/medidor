@@ -6,10 +6,13 @@
 
 package medidor.controlador;
 
+import javax.swing.JList;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author Yuli
  */
 public interface IMain {
-    
+    public void mostrarDescripcion(JList jlist, JTextArea jtextarea);
 }

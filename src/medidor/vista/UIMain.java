@@ -21,7 +21,7 @@ public class UIMain extends javax.swing.JFrame {
     private IMain interfaceMain;
     
     public UIMain(IMain interfaceMain) {
-        this.getContentPane().setBackground(new java.awt.Color(240, 240, 240));
+        this.getContentPane().setBackground(new java.awt.Color(221, 238, 255));
         this.setTitle("MedA");
         this.setVisible(true);
         initComponents();
@@ -40,13 +40,13 @@ public class UIMain extends javax.swing.JFrame {
 
         lblTitulo = new javax.swing.JLabel();
         btnEvaluar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        lstModelos = new javax.swing.JList();
         lblEscoger = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtModelos = new javax.swing.JTextArea();
         jSeparator1 = new javax.swing.JSeparator();
         btnAyuda = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstModelos = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Medidor de Calidad");
@@ -70,23 +70,11 @@ public class UIMain extends javax.swing.JFrame {
         btnEvaluar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btnEvaluar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        lstModelos.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        lstModelos.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Modelo ISO 9126", "Modelo McCall", "Modelo Peruano" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        lstModelos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lstModelosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(lstModelos);
-
         lblEscoger.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lblEscoger.setText("Seleccione un estandar de calidad:");
 
         txtModelos.setColumns(20);
+        txtModelos.setFont(new java.awt.Font("Franklin Gothic Book", 2, 14)); // NOI18N
         txtModelos.setRows(5);
         jScrollPane2.setViewportView(txtModelos);
 
@@ -105,33 +93,45 @@ public class UIMain extends javax.swing.JFrame {
         btnAyuda.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btnAyuda.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        lstModelos.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        lstModelos.setModel(new javax.swing.AbstractListModel() {
+            String[] strings = { "Modelo ISO 9126", "Modelo McCall", "Modelo Peruano" };
+            public int getSize() { return strings.length; }
+            public Object getElementAt(int i) { return strings[i]; }
+        });
+        lstModelos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lstModelosMousePressed(evt);
+            }
+        });
+        jScrollPane1.setViewportView(lstModelos);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(lblTitulo))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(lblTitulo))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(24, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEscoger)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEscoger))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnEvaluar))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(45, 45, 45)
-                                        .addComponent(btnAyuda))))
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                                    .addComponent(btnEvaluar)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnAyuda)
+                                        .addGap(24, 24, 24))))))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,27 +140,28 @@ public class UIMain extends javax.swing.JFrame {
                 .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblEscoger)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblEscoger)
-                        .addGap(9, 9, 9)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(btnEvaluar)
                         .addGap(18, 18, 18)
                         .addComponent(btnAyuda)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void lstModelosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstModelosMouseClicked
-        
-    }//GEN-LAST:event_lstModelosMouseClicked
+    private void lstModelosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstModelosMousePressed
+        interfaceMain.mostrarDescripcion(lstModelos, txtModelos);
+    }//GEN-LAST:event_lstModelosMousePressed
 
     /**
      * @param args the command line arguments

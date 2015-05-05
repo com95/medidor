@@ -41,10 +41,7 @@ public class Main {
             Class.forName("com.mysql.jdbc.Driver");
             con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/IngSoft","root", "123456");
 
-            // Creamos un Statement para poder hacer peticiones a la bd
             stat1 = (Statement) con.createStatement();
-
-            // Seleccionar todos los datos ordenados por potencia
             String consultaMod = "SELECT * FROM MODELOS";
             ResultSet resultadoC1 = stat1.executeQuery(consultaMod);
             
@@ -126,7 +123,7 @@ public class Main {
         {
             modelos.get(i).toStrings();
         }
-        
         new Main();
     }
+    
 }
