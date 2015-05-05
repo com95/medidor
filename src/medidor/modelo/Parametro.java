@@ -39,4 +39,9 @@ public class Parametro {
         this.valor = valor;
     }
     
+    public void toStrings()
+    {
+        System.out.println("\t\t\t\tParametro (" + codigoParametro + ", " + valor + ")");
+    }
+    
 }

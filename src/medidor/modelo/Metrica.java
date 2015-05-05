@@ -123,6 +123,13 @@ public class Metrica {
         this.parametros = parametros;
     }
     
-    
+    public void toStrings()
+    {
+        System.out.print("\t\t\tMetrica (" + codigoMetrica + ", " + nombreMetrica + ", " + escalaMedicion + ", " + tipoMedida + ", " + valor + ", " + estado + ", " + formula + ", " + valorOptimo + ")");
+        for(int i = 0; i < parametros.size(); i++)
+        {
+            parametros.get(i).toStrings();
+        }
+    }
     
 }

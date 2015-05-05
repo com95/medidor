@@ -15,16 +15,16 @@ import java.util.Vector;
 public class Modelo {
     private int codigoModelo;
     private String nombreModelo;
-    private Vector <Caracteristica> carateristicas;
+    private Vector <Caracteristica> caracteristicas;
 
     public Modelo() {
         this(-1, "NULL", null);
     }
 
-    public Modelo(int codigoModelo, String nombreModelo, Vector<Caracteristica> carateristicas) {
+    public Modelo(int codigoModelo, String nombreModelo, Vector<Caracteristica> caracteristicas) {
         this.codigoModelo = codigoModelo;
         this.nombreModelo = nombreModelo;
-        this.carateristicas = carateristicas;
+        this.caracteristicas = caracteristicas;
     }
 
     public int getCodigoModelo() {
@@ -43,15 +43,20 @@ public class Modelo {
         this.nombreModelo = nombreModelo;
     }
 
-    public Vector<Caracteristica> getCarateristicas() {
-        return carateristicas;
+    public Vector<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
     }
 
-    public void setCarateristicas(Vector<Caracteristica> carateristicas) {
-        this.carateristicas = carateristicas;
+    public void setCaracteristicas(Vector<Caracteristica> carateristicas) {
+        this.caracteristicas = carateristicas;
     }
 
-        
-    
-    
+    public void toStrings()
+    {
+        System.out.print("Modelo (" + codigoModelo + ", " + nombreModelo +  ")");
+        for(int i = 0; i < caracteristicas.size(); i++)
+        {
+            caracteristicas.get(i).toStrings();
+        }
+    }   
 }

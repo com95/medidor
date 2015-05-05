@@ -51,5 +51,13 @@ public class SubCaracteristica {
         this.metricas = metricas;
     }
 
+    public void toStrings()
+    {
+        System.out.print("\t\tSubCaracteristica (" + codigoSubCaracteristica + ", " + nombreSubCaracteristica +  ")");
+        for(int i = 0; i < metricas.size(); i++)
+        {
+            metricas.get(i).toStrings();
+        }
+    }
     
 }

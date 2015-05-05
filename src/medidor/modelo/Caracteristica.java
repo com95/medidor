@@ -50,5 +50,14 @@ public class Caracteristica {
     public void setSubcaracteristicas(Vector<SubCaracteristica> subcaracteristicas) {
         this.subcaracteristicas = subcaracteristicas;
     }
+    
+    public void toStrings()
+    {
+        System.out.print("\tCaracteristica (" + codigoCaracteristica + ", " + nombreCaracteristica +  ")");
+        for(int i = 0; i < subcaracteristicas.size(); i++)
+        {
+            subcaracteristicas.get(i).toStrings();
+        }
+    }
         
 }

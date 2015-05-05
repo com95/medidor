@@ -12,7 +12,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+import medidor.modelo.Caracteristica;
+import medidor.modelo.Metrica;
 import medidor.modelo.Modelo;
+import medidor.modelo.SubCaracteristica;
 import medidor.vista.UIMain;
 
 /**
@@ -36,21 +39,74 @@ public class Main {
         Statement stat = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/metricas","root", "123456");
+            con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/IngSoft","root", "123456");
 
             // Creamos un Statement para poder hacer peticiones a la bd
             stat = (Statement) con.createStatement();
 
             // Seleccionar todos los datos ordenados por potencia
-            String seleccionar = "SELECT * FROM MODELOS";
-            ResultSet rs = stat.executeQuery(seleccionar);
-
+            String consultaMod = "SELECT * FROM MODELOS";
+            ResultSet resultadoC1 = stat.executeQuery(consultaMod);
+            
+            
             // Recorrer todas las filas de la tabla Motor
-            while (rs.next()) {
-                Modelo m = new Modelo();
-                m.setCodigoModelo(Integer.parseInt(rs.getString("CodigoModelo")));
-                m.setNombreModelo(rs.getString("Nombre"));
+            while (resultadoC1.next()) {
                 
+                Modelo m = new Modelo();
+                String codModelo = resultadoC1.getString("CodigoModelo");
+                m.setCodigoModelo(Integer.parseInt(codModelo));
+                m.setNombreModelo(resultadoC1.getString("Nombre"));
+
+                String consultaCar = "SELECT * FROM CARACTERISTICAS WHERE CodigoModelo = '" + codModelo + "'";
+                ResultSet resultadoC2 = stat.executeQuery(consultaCar);
+                Vector <Caracteristica> vCaracteristica = new Vector <Caracteristica>();
+                
+                while (resultadoC2.next()) {
+                    Caracteristica c = new Caracteristica();
+                    String codCaracteristica = resultadoC2.getString("CodigoCaracteristica");
+                    c.setCodigoCaracteristica(Integer.parseInt(codCaracteristica));
+                    c.setNombreCaracteristica(resultadoC2.getString("Nombre"));
+                    /*
+                    String consultaSub = "SELECT * FROM SUBCARACTERISTICAS WHERE CodigoCaracteristica = '" + codCaracteristica + "'";
+                    ResultSet resultadoC3 = stat.executeQuery(consultaSub);                                      
+                    
+                    Vector <SubCaracteristica> vSubCaracteristicas = new Vector <SubCaracteristica> ();
+                    
+                    while (resultadoC3.next()) {
+                        SubCaracteristica s = new SubCaracteristica();
+                        String codSubCaracteristica = resultadoC3.getString("CodigoSubCaracteristica");
+                        
+                        s.setCodigoSubCaracteristica(Integer.parseInt(codSubCaracteristica));
+                        s.setNombreSubCaracteristica(resultadoC3.getString("Nombre"));
+                        
+                        String consultaMet = "SELECT * FROM METRICAS WHERE CodigoSubCaracteristica = '" + codSubCaracteristica + "'";
+                        ResultSet resultadoC4 = stat.executeQuery(consultaMet); 
+                        
+                        Vector <Metrica> vMetricas = new Vector <Metrica> ();
+                        
+                        while (resultadoC4.next())
+                        {
+                            Metrica mt = new Metrica ();
+                            
+                            mt.setCodigoMetrica(Integer.parseInt(resultadoC4.getString("CodigoMetrica")));
+                            mt.setNombreMetrica(resultadoC4.getString("Nombre"));
+                            mt.setProposito(resultadoC4.getString("Proposito"));
+                            mt.setEscalaMedicion(resultadoC4.getString("EscalaMedicion"));
+                            mt.setTipoMedida(resultadoC4.getString("TipoMedida"));
+                            mt.setEstado(Boolean.parseBoolean(resultadoC4.getString("Estado")));
+                            mt.setFormula(resultadoC4.getString("Formula"));
+                            mt.setValorOptimo(Double.parseDouble(resultadoC4.getString("ValorOptimo")));
+                            
+                            vMetricas.add(mt);
+                        }
+
+                        s.setMetricas(vMetricas);
+                        vSubCaracteristicas.add(s);
+                    }
+                    c.setSubcaracteristicas(vSubCaracteristicas);
+                    vCaracteristica.add(c);*/
+                }
+                m.setCaracteristicas(vCaracteristica);
                 modelos.add(m);
             }
         } catch (ClassNotFoundException | SQLException e) {
