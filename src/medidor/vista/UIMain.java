@@ -8,7 +8,6 @@ public class UIMain extends javax.swing.JFrame {
     
     public UIMain(IMain interfaceMain) {
         this.getContentPane().setBackground(new java.awt.Color(221, 238, 255));
-        this.setTitle("MedA");
         this.setVisible(true);
         initComponents();
         
@@ -155,7 +154,7 @@ public class UIMain extends javax.swing.JFrame {
     }//GEN-LAST:event_lstModelosMousePressed
 
     private void btnEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarActionPerformed
-        interfaceMain.evaluar();
+        interfaceMain.evaluar(lstModelos);
     }//GEN-LAST:event_btnEvaluarActionPerformed
 
     /**

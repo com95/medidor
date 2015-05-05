@@ -108,7 +108,7 @@ public class Main {
             if (stat1 != null) stat1.close();
             if (con != null) con.close();    
         }
-        
+        /*
         for(int i = 0; i < modelos.size(); i++)
         {
             modelos.get(i).toStrings();
@@ -116,7 +116,7 @@ public class Main {
         
         Resolver r = new Resolver();
         System.out.println(r.resolverAritmetico("1-(5/32)"));
-        
+        */
         new Main();
     }
     
