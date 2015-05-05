@@ -15,4 +15,5 @@ import javax.swing.JTextArea;
  */
 public interface IMain {
     public void mostrarDescripcion(JList jlist, JTextArea jtextarea);
+    public void evaluar();
 }

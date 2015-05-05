@@ -1,23 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package medidor.vista;
 
 import medidor.controlador.IMain;
 
-/**
- *
- * @author Yuli
- */
 public class UIMain extends javax.swing.JFrame {
-
-    /**
-     * Creates new form UIMain
-     */
-    
+  
     private IMain interfaceMain;
     
     public UIMain(IMain interfaceMain) {
@@ -69,6 +55,11 @@ public class UIMain extends javax.swing.JFrame {
         btnEvaluar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/A1.png"))); // NOI18N
         btnEvaluar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         btnEvaluar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEvaluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEvaluarActionPerformed(evt);
+            }
+        });
 
         lblEscoger.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lblEscoger.setText("Seleccione un estandar de calidad:");
@@ -162,6 +153,10 @@ public class UIMain extends javax.swing.JFrame {
     private void lstModelosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstModelosMousePressed
         interfaceMain.mostrarDescripcion(lstModelos, txtModelos);
     }//GEN-LAST:event_lstModelosMousePressed
+
+    private void btnEvaluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEvaluarActionPerformed
+        interfaceMain.evaluar();
+    }//GEN-LAST:event_btnEvaluarActionPerformed
 
     /**
      * @param args the command line arguments

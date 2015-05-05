@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package medidor.modelo;
 
 import java.util.Vector;
 
-/**
- *
- * @author Yuli
- */
 public class Modelo {
     private int codigoModelo;
     private String nombreModelo;
@@ -53,7 +43,7 @@ public class Modelo {
 
     public void toStrings()
     {
-        System.out.print("Modelo (" + codigoModelo + ", " + nombreModelo +  ")");
+        System.out.println("Modelo (" + codigoModelo + ", " + nombreModelo +  ")");
         for(int i = 0; i < caracteristicas.size(); i++)
         {
             caracteristicas.get(i).toStrings();

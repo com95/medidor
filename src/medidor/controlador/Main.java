@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package medidor.controlador;
 
 import com.mysql.jdbc.Connection;
@@ -18,10 +12,6 @@ import medidor.modelo.Modelo;
 import medidor.modelo.SubCaracteristica;
 import medidor.vista.UIMain;
 
-/**
- *
- * @author Yuli
- */
 public class Main {
     
     private CMain inicio;
@@ -123,6 +113,10 @@ public class Main {
         {
             modelos.get(i).toStrings();
         }
+        
+        Resolver r = new Resolver();
+        System.out.println(r.resolverAritmetico("1-(5/32)"));
+        
         new Main();
     }
     

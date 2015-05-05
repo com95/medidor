@@ -1,0 +1,118 @@
+Metric results for Tiendita at 04/05/15 02:58 PM
+
+Abstractness,11.1%
+Average Block Depth,0.64
+    minimum,0
+    maximum,5
+Average Cyclomatic Complexity,1.28
+    minimum,1
+    maximum,8
+Average Lines Of Code Per Method,9.83
+    minimum,1
+    maximum,210
+Average Number of Constructors Per Type,0.50
+    minimum,0
+    maximum,2
+Average Number of Fields Per Type,3.22
+    minimum,0
+    maximum,28
+Average Number of Methods Per Type,3.44
+    minimum,0
+    maximum,10
+Average Number of Parameters,0.74
+    minimum,0
+    maximum,2
+Comments Ratio,5.1%
+Efferent Couplings,10
+Lines of Code,815
+Number of Characters,"42,939"
+Number of Comments,42
+    end-of-line,24
+    multi-line,2
+    javadoc,16
+Number of Constructors,9
+    public,9
+    protected,0
+    package,0
+    private,0
+Number of Fields,58
+    instance,58
+        public,0
+        protected,0
+        package,1
+        private,57
+    static,0
+        public,0
+        protected,0
+        package,0
+        private,0
+    public,0
+        instance,0
+        static,0
+    protected,0
+        instance,0
+        static,0
+    package,1
+        instance,1
+        static,0
+    private,57
+        instance,57
+        static,0
+Number of Lines,"1,110"
+Number of Methods,62
+    instance,61
+        public,53
+        protected,0
+        package,0
+        private,8
+    static,1
+        public,1
+        protected,0
+        package,0
+        private,0
+    public,54
+        instance,53
+        static,1
+    protected,0
+        instance,0
+        static,0
+    package,0
+        instance,0
+        static,0
+    private,8
+        instance,8
+        static,0
+Number of Packages,6
+    compilation units,11
+        minimum,0
+        average,1
+        maximum,7
+    class files,0
+        minimum,0
+        average,0
+        maximum,0
+Number of Semicolons,380
+Number of Types,18
+    interface,2
+        public,2
+        protected,0
+        package,0
+        private,0
+    class,16
+        public,9
+        protected,0
+        package,7
+        private,0
+    public,11
+        interface,2
+        class,9
+    protected,0
+        interface,0
+        class,0
+    package,7
+        interface,0
+        class,7
+    private,0
+        interface,0
+        class,0
+Weighted Methods,140

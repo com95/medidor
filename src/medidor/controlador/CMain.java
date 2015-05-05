@@ -1,18 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package medidor.controlador;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.Statement;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JTextArea;
 import medidor.modelo.Caracteristica;
 import medidor.modelo.Metrica;
@@ -20,10 +22,6 @@ import medidor.modelo.Modelo;
 import medidor.modelo.SubCaracteristica;
 import medidor.vista.UIMain;
 
-/**
- *
- * @author Yuli
- */
 
 public class CMain implements IMain{
     private UIMain ventanaPrincipal;
@@ -67,4 +65,41 @@ public class CMain implements IMain{
                 break;
         }
     }
+    
+    public void evaluar()
+    {
+        File archivoProducto = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        
+        try {
+            archivoProducto = new File ("resultado_SM.csv");
+            fr = new FileReader (archivoProducto);
+            br = new BufferedReader(fr);
+            /* GET DATOS RELEVANTES
+            String linea;
+            while((linea = br.readLine()) != null)
+            {   
+                System.out.println(linea);
+            } */
+            
+        }
+        catch(IOException e){
+            JOptionPane.showMessageDialog(null, "El archivo 'resultados_SM.csv' no existe.", "Error", ERROR_MESSAGE);
+        }
+        finally
+        { 
+            if( null != fr )
+            {   
+                try
+                {     
+                    fr.close();
+                } catch (IOException ex) {
+                    
+                }
+            }                  
+        }
+        
+    }
+    
 }
