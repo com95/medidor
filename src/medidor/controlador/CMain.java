@@ -261,8 +261,6 @@ public class CMain implements IMain {
                 doc.add(tabla);
             }
         }
-
-
         doc.close();
     }
 
