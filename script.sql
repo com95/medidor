@@ -6,12 +6,6 @@ CREATE TABLE Caracteristicas (CodigoCaracteristica int NOT NULL AUTO_INCREMENT, 
 CREATE TABLE SubCaracteristicas (CodigoSubCaracteristica int NOT NULL AUTO_INCREMENT, CodigoCaracteristica int, Nombre varchar(64), PRIMARY KEY (CodigoSubCaracteristica), FOREIGN KEY (CodigoCaracteristica) REFERENCES Caracteristicas(CodigoCaracteristica));
 CREATE TABLE Metricas (CodigoMetrica int NOT NULL AUTO_INCREMENT, CodigoSubCaracteristica int, Nombre varchar(64), Proposito varchar(255), EscalaMedicion varchar(16), TipoMedida varchar(32), Estado Bool, Formula varchar(64), ValorOptimo Double, PRIMARY KEY (CodigoMetrica), FOREIGN KEY (CodigoSubCaracteristica) REFERENCES SubCaracteristicas(CodigoSubCaracteristica));
 
-SELECT * FROM Metricas;
-SELECT * FROM SubCaracteristicas;
-SELECT * FROM Caracteristicas;
-SELECT * FROM Modelos;
-
-
 INSERT INTO Modelos VALUES(DEFAULT,'ISO 91-26');
 INSERT INTO Modelos VALUES(DEFAULT,'MCCALL');
 INSERT INTO Modelos VALUES(DEFAULT,'PERUANO');
@@ -89,7 +83,7 @@ INSERT INTO SubCaracteristicas VALUES(DEFAULT,18,'RECUPERABILIDAD');
 INSERT INTO SubCaracteristicas VALUES(DEFAULT,18,'CONFORMIDAD DE CONFIABILIDAD');
 
 
-INSERT INTO Metricas VALUES(DEFAULT,1,'ADECUACION FUNCIONAL','¿Cuán adecuadas son las funciones evaluadas?','Absoluta','cantidad/cantidad',0,'1-$0/$',1.0);
+INSERT INTO Metricas VALUES(DEFAULT,1,'ADECUACION FUNCIONAL','¿Cuán adecuadas son las funciones evaluadas?','Absoluta','cantidad/cantidad',0,'1-$/$',1.0);
 INSERT INTO Metricas VALUES(DEFAULT,1,'COMPLETITUD E IMPLEMENTACION FUNCIONAL','¿Qué tan completa está la implementación de acuerdo a las especificaciones de requerimientos?','Absoluta','cantidad/cantidad',0,'1-$/$',1.0);
 INSERT INTO Metricas VALUES(DEFAULT,1,'COBERTURA E IMPLEMENTACIÓN FUNCIONAL','¿Cuán correcta es la implementación funcional?','Absoluta','cantidad/cantidad',0,'1-$/$',1.0);
 INSERT INTO Metricas VALUES(DEFAULT,1,'VOLATILIDAD','¿Qué tan estable es la especificación funcional después de entrar en operación?','Absoluta','cantidad/cantidad',0,'1-$/$',1.0);
@@ -163,16 +157,16 @@ INSERT INTO Metricas VALUES(DEFAULT,45,'GRADO DE CUMPLIMIENTO DE NORMAS','Medir 
 INSERT INTO Metricas VALUES(DEFAULT,46,'ESTANDARIZACIÓN DE INTERFACE','Medir el grado de estandarización de interface','','',0,'$/$',1);
 INSERT INTO Metricas VALUES(DEFAULT,46,'FACILIDAD DE COMUNICACIÓN EN LAS INTERFACES','Medir el grado de auto explicación de los elementos de la interfaz','','',0,'$/$',1);
 INSERT INTO Metricas VALUES(DEFAULT,46,'ENTENDIBILIDAD DE MENSAJES','Medir el grado de entendibilidad de los mensajes','','',0,'$/$',1);
-INSERT INTO Metricas VALUES(DEFAULT,39,'ADECUACION FUNCIONAL','¿Cuán adecuadas son las funciones evaluadas?','Absoluta','cantidad/cantidad',0,'1-$/$',1.00);
-INSERT INTO Metricas VALUES(DEFAULT,39,'INTEGRIDAD DE IMPLEMENTACION FUNCIONAL','¿Cuán completa está la implementación de acuerdo a las especificaciones de requerimientos?','Absoluta','cantidad/cantidad',0,'1-$/$',1.00);
-INSERT INTO Metricas VALUES(DEFAULT,39,'COBERTURA DE IMPLEMENTACION FUNCIONAL','¿Cuán correcta es la implementación funcional?','Absoluta','cantidad/cantidad',0,'1-$/$',1.00);
-INSERT INTO Metricas VALUES(DEFAULT,27,'VOLATILIDAD','¿Cuán estable es la especificación funcional después que entra en operación?','Absoluta','cantidad/cantidad',0,'1-$/$',1);
-INSERT INTO Metricas VALUES(DEFAULT,27,'CONFORMIDAD DE LA NORMA DE INTERFAZ','¿Cuán conforme son las interfaces respecto a las regulaciones, normas y convenciones?','Absoluta','cantidad/cantidad',0,'$/$',1);
-INSERT INTO Metricas VALUES(DEFAULT,27,'DENSIDAD ESTIMADA DEL ERROR LATENTE','¿Cuán problemas aún existentes pueden surgir como errores futuros?','Absoluta','cantidad/tamaño',0,'abs($-$)/$',0);
-INSERT INTO Metricas VALUES(DEFAULT,27,'DENSIDAD DE FALLAS CONTRA CASOS DE PRUEBA','¿Cuántas fallas fueron detectadas durante el periodo de prueba definido?','Absoluta','cantidad/cantidad',0,'$/$',0);
-INSERT INTO Metricas VALUES(DEFAULT,27,'RESOLUCIÓN DE FALLAS','¿Cuántas condiciones de falla son resueltas?','Absoluta','cantidad/cantidad',0,'$/$',1);
-INSERT INTO Metricas VALUES(DEFAULT,27,'ELIMINACIÓN DE FALLAS','¿Cuántas fallas han sido corregidas?','Absoluta','cantidad/cantidad',0,'$/$',1);
-INSERT INTO Metricas VALUES(DEFAULT,27,'PREVENCIÓN DE FALLAS','¿Cuántos tipos de errores fueron causados bajo el control para evitar fallas críticas y serias?','Absoluta','cantidad/cantidad',0,'$/$',1);
-INSERT INTO Metricas VALUES(DEFAULT,27,'PREVENCIÓN DE OPERACIÓN INCORRECTA','¿Cuántas funciones son implementadas con capacidad de prevención de operación incorrecta?','Absoluta','cantidad/cantidad',0,'$/$',1);
-INSERT INTO Metricas VALUES(DEFAULT,27,'TIEMPO MEDIO DE RECUPERACIÓN','¿Cuál es el tiempo promedio que el sistema toma para completar la recuperación desde el inicio de la recuperación?','Ratio','cantidad/cantidad',0,'$/$',0);
-INSERT INTO Metricas VALUES(DEFAULT,27,'CONFORMIDAD DE FIABILIDAD','¿Cuán conforme es la fiabilidad del producto a las regulaciones aplicables, normas y convenciones?','Absoluta','cantidad/cantidad',0,'1-$/$',0);
+INSERT INTO Metricas VALUES(DEFAULT,47,'ADECUACION FUNCIONAL','¿Cuán adecuadas son las funciones evaluadas?','Absoluta','cantidad/cantidad',0,'1-$/$',1.00);
+INSERT INTO Metricas VALUES(DEFAULT,47,'INTEGRIDAD DE IMPLEMENTACION FUNCIONAL','¿Cuán completa está la implementación de acuerdo a las especificaciones de requerimientos?','Absoluta','cantidad/cantidad',0,'1-$/$',1.00);
+INSERT INTO Metricas VALUES(DEFAULT,47,'COBERTURA DE IMPLEMENTACION FUNCIONAL','¿Cuán correcta es la implementación funcional?','Absoluta','cantidad/cantidad',0,'1-$/$',1.00);
+INSERT INTO Metricas VALUES(DEFAULT,47,'VOLATILIDAD','¿Cuán estable es la especificación funcional después que entra en operación?','Absoluta','cantidad/cantidad',0,'1-$/$',1);
+INSERT INTO Metricas VALUES(DEFAULT,48,'CONFORMIDAD DE LA NORMA DE INTERFAZ','¿Cuán conforme son las interfaces respecto a las regulaciones, normas y convenciones?','Absoluta','cantidad/cantidad',0,'$/$',1);
+INSERT INTO Metricas VALUES(DEFAULT,49,'DENSIDAD ESTIMADA DEL ERROR LATENTE','¿Cuán problemas aún existentes pueden surgir como errores futuros?','Absoluta','cantidad/tamaño',0,'abs($-$)/$',0);
+INSERT INTO Metricas VALUES(DEFAULT,49,'DENSIDAD DE FALLAS CONTRA CASOS DE PRUEBA','¿Cuántas fallas fueron detectadas durante el periodo de prueba definido?','Absoluta','cantidad/cantidad',0,'$/$',0);
+INSERT INTO Metricas VALUES(DEFAULT,49,'RESOLUCIÓN DE FALLAS','¿Cuántas condiciones de falla son resueltas?','Absoluta','cantidad/cantidad',0,'$/$',1);
+INSERT INTO Metricas VALUES(DEFAULT,49,'ELIMINACIÓN DE FALLAS','¿Cuántas fallas han sido corregidas?','Absoluta','cantidad/cantidad',0,'$/$',1);
+INSERT INTO Metricas VALUES(DEFAULT,50,'PREVENCIÓN DE FALLAS','¿Cuántos tipos de errores fueron causados bajo el control para evitar fallas críticas y serias?','Absoluta','cantidad/cantidad',0,'$/$',1);
+INSERT INTO Metricas VALUES(DEFAULT,50,'PREVENCIÓN DE OPERACIÓN INCORRECTA','¿Cuántas funciones son implementadas con capacidad de prevención de operación incorrecta?','Absoluta','cantidad/cantidad',0,'$/$',1);
+INSERT INTO Metricas VALUES(DEFAULT,51,'TIEMPO MEDIO DE RECUPERACIÓN','¿Cuál es el tiempo promedio que el sistema toma para completar la recuperación desde el inicio de la recuperación?','Ratio','cantidad/cantidad',0,'$/$',0);
+INSERT INTO Metricas VALUES(DEFAULT,52,'CONFORMIDAD DE FIABILIDAD','¿Cuán conforme es la fiabilidad del producto a las regulaciones aplicables, normas y convenciones?','Absoluta','cantidad/cantidad',0,'1-$/$',0);

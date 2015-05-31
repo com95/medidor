@@ -30,11 +30,12 @@ import medidor.vista.UIMain;
 public class CMain implements IMain {
 
     private UIMain ventanaPrincipal;
-    private ArrayList<Double> p;
+    private ArrayList<Modelo> modelos;
 
-    public CMain() {
+    public CMain(ArrayList<Modelo> modelos) {
         ventanaPrincipal = new UIMain(this);
-        p = new ArrayList<Double>();
+        this.modelos = modelos;
+        
     }
 
     public void mostrarDescripcion(JList jlist, JTextArea jtextarea) {
@@ -71,13 +72,8 @@ public class CMain implements IMain {
     }
 
     public void evaluar(JList jlist) {
-        File archivo = null;
-        FileReader fr = null;
-
-        BufferedReader br = null;
-
         try {
-            
+            ArrayList<Double> p = new ArrayList<Double>();
             switch(jlist.getSelectedIndex())
             {
                 case 0:
@@ -96,7 +92,11 @@ public class CMain implements IMain {
                         for (int i = 0; i < sheet.getRows(); i++)
                                 p.add(((NumberCell)sheet.getCell(1, i)).getValue());
                     }
-
+                    calcularMetricas(0, p);
+                    for(int i = 0; i < modelos.size(); i++)
+                    {
+                        modelos.get(i).toStrings();
+                    }
                     break;
                 case 1:
                     Runtime.getRuntime().exec("cmd /c start McCall.xls");
@@ -112,6 +112,11 @@ public class CMain implements IMain {
                         
                         for (int i = 0; i < sheet.getRows(); i++)
                                 p.add(((NumberCell)sheet.getCell(1, i)).getValue());
+                    }
+                    calcularMetricas(1, p);
+                    for(int i = 0; i < modelos.size(); i++)
+                    {
+                        modelos.get(i).toStrings();
                     }
                     break;
                 case 2:
@@ -129,6 +134,11 @@ public class CMain implements IMain {
                         for (int i = 0; i < sheet.getRows(); i++)
                                 p.add(((NumberCell)sheet.getCell(1, i)).getValue());
                     }
+                    calcularMetricas(2, p);
+                    for(int i = 0; i < modelos.size(); i++)
+                    {
+                        modelos.get(i).toStrings();
+                    }
                     break;
             }
 
@@ -139,9 +149,34 @@ public class CMain implements IMain {
         } catch (java.lang.ClassCastException e)
         {
             JOptionPane.showMessageDialog(null, "Faltan completar datos. Intente de nuevo", "Error", ERROR_MESSAGE);
-            p.clear();
         }
- 
+    }
+
+    private void calcularMetricas(int i, ArrayList<Double> p) {
+        Modelo m = modelos.get(i);
+        int count = 0;
+        Calculadora calc = new Calculadora();
+        for(int j = 0; j < m.getCaracteristicas().size(); j++)
+        {
+            Caracteristica c = m.getCaracteristicas().get(j);
+            for(int k = 0; k < c.getSubcaracteristicas().size(); k++)
+            {
+                SubCaracteristica s = c.getSubcaracteristicas().get(k);
+                for(int l = 0; l < s.getMetricas().size(); l++)
+                {
+                    Metrica mt = s.getMetricas().get(l);
+                    String resolver = mt.getFormula();
+                    while(resolver.indexOf("$") != -1)
+                    {
+                        int pos = resolver.indexOf("$");
+                        resolver = resolver.substring(0, pos) + String.valueOf(p.get(count)) + resolver.substring(pos + 1, resolver.length());
+                        count++;
+                    }
+                    
+                    mt.setValor(calc.calcular(resolver));
+                }
+            }
+        }
     }
 
 }

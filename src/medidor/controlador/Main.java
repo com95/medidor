@@ -5,6 +5,7 @@ import com.mysql.jdbc.Statement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import medidor.modelo.Caracteristica;
 import medidor.modelo.Metrica;
@@ -15,16 +16,15 @@ import medidor.vista.UIMain;
 public class Main {
     
     private CMain inicio;
+    private static ArrayList <Modelo> modelos = new ArrayList <Modelo> ();
     
     public Main()
     {
-        inicio = new CMain();
+        inicio = new CMain(modelos);
     }
     
     public static void main(String args []) throws SQLException
     {
-        Vector <Modelo> modelos = new Vector <Modelo> ();
-        
         Connection con = null;
         Statement stat1 = null;
         try {
@@ -49,7 +49,7 @@ public class Main {
                 
                 String consultaCar = "SELECT * FROM CARACTERISTICAS WHERE CodigoModelo = '" + codModelo + "'";
                 ResultSet resultadoC2 = stat2.executeQuery(consultaCar);
-                Vector <Caracteristica> vCaracteristica = new Vector <Caracteristica>();
+                ArrayList<Caracteristica> vCaracteristica = new ArrayList <Caracteristica>();
                 
                 while (resultadoC2.next()) {
                     Caracteristica c = new Caracteristica();
@@ -62,7 +62,7 @@ public class Main {
                     
                     String consultaSub = "SELECT * FROM SUBCARACTERISTICAS WHERE CodigoCaracteristica = '" + codCaracteristica + "'";
                     ResultSet resultadoC3 = stat3.executeQuery(consultaSub);                                      
-                    Vector <SubCaracteristica> vSubCaracteristicas = new Vector <SubCaracteristica> ();
+                    ArrayList <SubCaracteristica> vSubCaracteristicas = new ArrayList <SubCaracteristica> ();
                     
                     while (resultadoC3.next()) {
                         SubCaracteristica s = new SubCaracteristica();
@@ -75,7 +75,7 @@ public class Main {
                         
                         String consultaMet = "SELECT * FROM METRICAS WHERE CodigoSubCaracteristica = '" + codSubCaracteristica + "'";
                         ResultSet resultadoC4 = stat4.executeQuery(consultaMet); 
-                        Vector <Metrica> vMetricas = new Vector <Metrica> ();
+                        ArrayList <Metrica> vMetricas = new ArrayList <Metrica> ();
                         
                         while (resultadoC4.next())
                         {

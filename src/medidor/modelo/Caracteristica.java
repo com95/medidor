@@ -1,17 +1,18 @@
 package medidor.modelo;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class Caracteristica {
     private int codigoCaracteristica;
     private String nombreCaracteristica;
-    private Vector <SubCaracteristica> subcaracteristicas;
+    private ArrayList <SubCaracteristica> subcaracteristicas;
 
     public Caracteristica() {
         this(-1, "NULL", null);
     }
     
-    public Caracteristica(int codigoCaracteristica, String nombreCaracteristica, Vector<SubCaracteristica> subcaracteristicas) {
+    public Caracteristica(int codigoCaracteristica, String nombreCaracteristica, ArrayList<SubCaracteristica> subcaracteristicas) {
         this.codigoCaracteristica = codigoCaracteristica;
         this.nombreCaracteristica = nombreCaracteristica;
         this.subcaracteristicas = subcaracteristicas;
@@ -33,11 +34,11 @@ public class Caracteristica {
         this.nombreCaracteristica = nombreCaracteristica;
     }
 
-    public Vector<SubCaracteristica> getSubcaracteristicas() {
+    public ArrayList<SubCaracteristica> getSubcaracteristicas() {
         return subcaracteristicas;
     }
 
-    public void setSubcaracteristicas(Vector<SubCaracteristica> subcaracteristicas) {
+    public void setSubcaracteristicas(ArrayList<SubCaracteristica> subcaracteristicas) {
         this.subcaracteristicas = subcaracteristicas;
     }
     

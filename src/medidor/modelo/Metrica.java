@@ -9,19 +9,18 @@ public class Metrica {
     private String proposito;
     private String escalaMedicion;
     private String tipoMedida;
-    private double valor;
+    private String valor;
     private boolean estado;
     private String formula;
     private double valorOptimo;
     private ArrayList <Double> parametros;
 
     public Metrica() {
-        this(-1, "NULL", "NULL", "NULL", "NULL", 0, false, "", 0, null);
-        this.parametros = new ArrayList <Double>();
+        this(-1, "NULL", "NULL", "NULL", "NULL", "NULL", false, "", 0);
     }
  
     
-    public Metrica(int codigoMetrica, String nombreMetrica, String proposito, String escalaMedicion, String tipoMedida, double valor, boolean estado, String formula, double valorOptimo, ArrayList<Double> parametros) {
+    public Metrica(int codigoMetrica, String nombreMetrica, String proposito, String escalaMedicion, String tipoMedida, String valor, boolean estado, String formula, double valorOptimo) {
         this.codigoMetrica = codigoMetrica;
         this.nombreMetrica = nombreMetrica;
         this.proposito = proposito;
@@ -31,7 +30,6 @@ public class Metrica {
         this.estado = estado;
         this.formula = formula;
         this.valorOptimo = valorOptimo;
-        this.parametros = parametros;
     }
 
     public int getCodigoMetrica() {
@@ -74,11 +72,11 @@ public class Metrica {
         this.tipoMedida = tipoMedida;
     }
 
-    public double getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
@@ -105,22 +103,10 @@ public class Metrica {
     public void setValorOptimo(double valorOptimo) {
         this.valorOptimo = valorOptimo;
     }
-
-    public ArrayList<Double> getParametros() {
-        return parametros;
-    }
-
-    public void setParametros(ArrayList<Double> parametros) {
-        this.parametros = parametros;
-    }
     
     public void toStrings()
     {
         System.out.println("\t\t\tMetrica (" + codigoMetrica + ", " + nombreMetrica + ", " + escalaMedicion + ", " + tipoMedida + ", " + valor + ", " + estado + ", " + formula + ", " + valorOptimo + ")");
-        for(int i = 0; i < parametros.size(); i++)
-        {
-            System.out.println("\t\t\t" + parametros.get(i));
-        }
     }
     
 }
