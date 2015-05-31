@@ -26,6 +26,15 @@ import medidor.modelo.Metrica;
 import medidor.modelo.Modelo;
 import medidor.modelo.SubCaracteristica;
 import medidor.vista.UIMain;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.Font;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 public class CMain implements IMain {
 
@@ -93,11 +102,12 @@ public class CMain implements IMain {
                                 p.add(((NumberCell)sheet.getCell(1, i)).getValue());
                     }
                     calcularMetricas(0, p);
-                    for(int i = 0; i < modelos.size(); i++)
-                    {
-                        modelos.get(i).toStrings();
-                    }
+                    generarReporte(0);
+
+                    JOptionPane.showMessageDialog(null, "Reporte generado.", "Listo", JOptionPane.INFORMATION_MESSAGE);
+                    Runtime.getRuntime().exec("cmd /c start reporte.pdf");
                     break;
+                
                 case 1:
                     Runtime.getRuntime().exec("cmd /c start McCall.xls");
                     int opt1 = JOptionPane.showConfirmDialog(null, 
@@ -114,11 +124,12 @@ public class CMain implements IMain {
                                 p.add(((NumberCell)sheet.getCell(1, i)).getValue());
                     }
                     calcularMetricas(1, p);
-                    for(int i = 0; i < modelos.size(); i++)
-                    {
-                        modelos.get(i).toStrings();
-                    }
+                    generarReporte(1);
+
+                    JOptionPane.showMessageDialog(null, "Reporte generado.", "Listo", JOptionPane.INFORMATION_MESSAGE);
+                    Runtime.getRuntime().exec("cmd /c start reporte.pdf");
                     break;
+                
                 case 2:
                     Runtime.getRuntime().exec("cmd /c start Peruano.xls");
                     int opt2 = JOptionPane.showConfirmDialog(null, 
@@ -135,10 +146,10 @@ public class CMain implements IMain {
                                 p.add(((NumberCell)sheet.getCell(1, i)).getValue());
                     }
                     calcularMetricas(2, p);
-                    for(int i = 0; i < modelos.size(); i++)
-                    {
-                        modelos.get(i).toStrings();
-                    }
+                    generarReporte(2);
+
+                    JOptionPane.showMessageDialog(null, "Reporte generado.", "Listo", JOptionPane.INFORMATION_MESSAGE);
+                    Runtime.getRuntime().exec("cmd /c start reporte.pdf");
                     break;
             }
 
@@ -149,6 +160,8 @@ public class CMain implements IMain {
         } catch (java.lang.ClassCastException e)
         {
             JOptionPane.showMessageDialog(null, "Faltan completar datos. Intente de nuevo", "Error", ERROR_MESSAGE);
+        } catch (DocumentException ex) {
+            Logger.getLogger(CMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -172,11 +185,29 @@ public class CMain implements IMain {
                         resolver = resolver.substring(0, pos) + String.valueOf(p.get(count)) + resolver.substring(pos + 1, resolver.length());
                         count++;
                     }
-                    
+                    System.out.println(resolver);
                     mt.setValor(calc.calcular(resolver));
                 }
             }
         }
+    }
+
+    private void generarReporte(int i) throws DocumentException, FileNotFoundException
+    {
+        Modelo m = modelos.get(i);
+        
+        Document doc = new Document();
+        PdfWriter.getInstance(doc, new FileOutputStream("reporte.pdf"));
+        doc.open();
+
+        Paragraph titulo = new Paragraph("INFORME DE RESULTADOS", FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD));
+        titulo.setAlignment(Element.ALIGN_CENTER);
+        doc.add(titulo);
+        
+        
+
+
+        doc.close();
     }
 
 }
