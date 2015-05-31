@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,18 +24,17 @@ import jxl.read.biff.BiffException;
 import medidor.modelo.Caracteristica;
 import medidor.modelo.Metrica;
 import medidor.modelo.Modelo;
-import medidor.modelo.Parametro;
 import medidor.modelo.SubCaracteristica;
 import medidor.vista.UIMain;
 
 public class CMain implements IMain {
 
     private UIMain ventanaPrincipal;
-    private Vector<Parametro> p;
+    private ArrayList<Double> p;
 
     public CMain() {
         ventanaPrincipal = new UIMain(this);
-        p = new Vector<Parametro>();
+        p = new ArrayList<Double>();
     }
 
     public void mostrarDescripcion(JList jlist, JTextArea jtextarea) {
@@ -71,26 +71,10 @@ public class CMain implements IMain {
     }
 
     public void evaluar(JList jlist) {
-        File archivo1 = null;
-        File archivo2 = null;
-        File archivo3 = null;
-        File archivo4 = null;
-        File archivo5 = null;
-        File archivo6 = null;
+        File archivo = null;
+        FileReader fr = null;
 
-        FileReader fr1 = null;
-        FileReader fr2 = null;
-        FileReader fr3 = null;
-        FileReader fr4 = null;
-        FileReader fr5 = null;
-        FileReader fr6 = null;
-
-        BufferedReader br1 = null;
-        BufferedReader br2 = null;
-        BufferedReader br3 = null;
-        BufferedReader br4 = null;
-        BufferedReader br5 = null;
-        BufferedReader br6 = null;
+        BufferedReader br = null;
 
         try {
             
@@ -99,112 +83,65 @@ public class CMain implements IMain {
                 case 0:
                     Runtime.getRuntime().exec("cmd /c start ISO.xls");
                     
+                    int opt0 = JOptionPane.showConfirmDialog(null, 
+                                  "Clic en Aceptar cuando termine de completar y guardar los datos solicitados", 
+                                  "Datos",
+                                  JOptionPane.OK_CANCEL_OPTION); 
+                    
+                    if(opt0 == 0)
+                    {
+                        Workbook workbook = Workbook.getWorkbook(new File("ISO.xls"));
+                        Sheet sheet = workbook.getSheet(0);
+                        
+                        for (int i = 0; i < sheet.getRows(); i++)
+                                p.add(((NumberCell)sheet.getCell(1, i)).getValue());
+                    }
+
                     break;
                 case 1:
                     Runtime.getRuntime().exec("cmd /c start McCall.xls");
+                    int opt1 = JOptionPane.showConfirmDialog(null, 
+                                  "Clic en Aceptar cuando termine de completar y guardar los datos solicitados", 
+                                  "Datos",
+                                  JOptionPane.OK_CANCEL_OPTION); 
+                    
+                    if(opt1 == 0)
+                    {
+                        Workbook workbook = Workbook.getWorkbook(new File("McCall.xls"));
+                        Sheet sheet = workbook.getSheet(0);
+                        
+                        for (int i = 0; i < sheet.getRows(); i++)
+                                p.add(((NumberCell)sheet.getCell(1, i)).getValue());
+                    }
                     break;
                 case 2:
                     Runtime.getRuntime().exec("cmd /c start Peruano.xls");
+                    int opt2 = JOptionPane.showConfirmDialog(null, 
+                                  "Clic en Aceptar cuando termine de completar y guardar los datos solicitados", 
+                                  "Datos",
+                                  JOptionPane.OK_CANCEL_OPTION); 
+                    
+                    if(opt2 == 0)
+                    {
+                        Workbook workbook = Workbook.getWorkbook(new File("Peruano.xls"));
+                        Sheet sheet = workbook.getSheet(0);
+                        
+                        for (int i = 0; i < sheet.getRows(); i++)
+                                p.add(((NumberCell)sheet.getCell(1, i)).getValue());
+                    }
                     break;
             }
-            /*
 
-            archivo1 = new File("ISO.xls");
-            archivo2 = new File("McCall.xls");
-            archivo3 = new File("Peruano.xls");
-
-            fr1 = new FileReader(archivo1);
-            fr2 = new FileReader(archivo2);
-            fr3 = new FileReader(archivo3);
-
-            br1 = new BufferedReader(fr1);
-            br2 = new BufferedReader(fr2);
-            br3 = new BufferedReader(fr3);
-
-            int cod = 6;
-            
-            Workbook workbook4 = Workbook.getWorkbook(new File("resultado_KW.xls"));
-            Sheet sheet4 = workbook4.getSheet(0);
-
-            for (int i = 0; i < sheet4.getRows(); i++)
-            {
-                p.add(new Parametro(cod, ((NumberCell)sheet4.getCell(1, i)).getValue()));
-                cod++;
-            }
-
-            Workbook workbook6 = Workbook.getWorkbook(new File("resultado_SQ.xls"));
-            Sheet sheet6 = workbook6.getSheet(0);
-
-            String linea6;
-
-            for (int i = 0; i < sheet4.getRows(); i++)
-            {
-                p.add(new Parametro(cod + i + 1, ((NumberCell)sheet4.getCell(1, i)).getValue()));
-            }
-
-            Workbook workbook3 = Workbook.getWorkbook(new File("resultado_MA.xls"));
-            Sheet sheet3 = workbook3.getSheet(0);
-
-            String linea3;
-
-            for (int i = 0; i < sheet3.getRows(); i++) {
-                linea3 = sheet3.getCell(1, i).getContents();
-                p.add(new Parametro(21 + i, Double.parseDouble(linea3)));
-            }
-
-            for (int i = 0; i < p.size(); i++) {
-                p.get(i).toStrings();
-            }*/
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Uno o más archivos solicitados no existen.", "Error", ERROR_MESSAGE);
-        }/* catch (BiffException ex) {
+        } catch (BiffException ex) {
             Logger.getLogger(CMain.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            if (null != fr1) {
-                try {
-                    fr1.close();
-                } catch (IOException ex1) {
-
-                }
-            }
-            if (null != fr2) {
-                try {
-                    fr2.close();
-                } catch (IOException ex2) {
-
-                }
-            }
-            if (null != fr3) {
-                try {
-                    fr3.close();
-                } catch (IOException ex3) {
-
-                }
-            }
-            if (null != fr4) {
-                try {
-                    fr4.close();
-                } catch (IOException ex4) {
-
-                }
-            }
-            if (null != fr5) {
-                try {
-                    fr5.close();
-                } catch (IOException ex5) {
-
-                }
-            }
-            if (null != fr6) {
-                try {
-                    fr6.close();
-                } catch (IOException ex6) {
-
-                }
-            }
-
-        }*/
-
+        } catch (java.lang.ClassCastException e)
+        {
+            JOptionPane.showMessageDialog(null, "Faltan completar datos. Intente de nuevo", "Error", ERROR_MESSAGE);
+            p.clear();
+        }
+ 
     }
 
 }

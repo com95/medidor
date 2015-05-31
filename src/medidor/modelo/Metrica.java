@@ -1,5 +1,6 @@
 package medidor.modelo;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class Metrica {
@@ -12,15 +13,15 @@ public class Metrica {
     private boolean estado;
     private String formula;
     private double valorOptimo;
-    private Vector <Parametro> parametros;
+    private ArrayList <Double> parametros;
 
     public Metrica() {
         this(-1, "NULL", "NULL", "NULL", "NULL", 0, false, "", 0, null);
-        this.parametros = new Vector <Parametro> ();
+        this.parametros = new ArrayList <Double>();
     }
  
     
-    public Metrica(int codigoMetrica, String nombreMetrica, String proposito, String escalaMedicion, String tipoMedida, double valor, boolean estado, String formula, double valorOptimo, Vector<Parametro> parametros) {
+    public Metrica(int codigoMetrica, String nombreMetrica, String proposito, String escalaMedicion, String tipoMedida, double valor, boolean estado, String formula, double valorOptimo, ArrayList<Double> parametros) {
         this.codigoMetrica = codigoMetrica;
         this.nombreMetrica = nombreMetrica;
         this.proposito = proposito;
@@ -105,11 +106,11 @@ public class Metrica {
         this.valorOptimo = valorOptimo;
     }
 
-    public Vector<Parametro> getParametros() {
+    public ArrayList<Double> getParametros() {
         return parametros;
     }
 
-    public void setParametros(Vector<Parametro> parametros) {
+    public void setParametros(ArrayList<Double> parametros) {
         this.parametros = parametros;
     }
     
@@ -118,7 +119,7 @@ public class Metrica {
         System.out.println("\t\t\tMetrica (" + codigoMetrica + ", " + nombreMetrica + ", " + escalaMedicion + ", " + tipoMedida + ", " + valor + ", " + estado + ", " + formula + ", " + valorOptimo + ")");
         for(int i = 0; i < parametros.size(); i++)
         {
-            parametros.get(i).toStrings();
+            System.out.println("\t\t\t" + parametros.get(i));
         }
     }
     
