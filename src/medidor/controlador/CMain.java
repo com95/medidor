@@ -31,10 +31,12 @@ import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Font;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.util.Date;
 
 public class CMain implements IMain {
 
@@ -185,7 +187,6 @@ public class CMain implements IMain {
                         resolver = resolver.substring(0, pos) + String.valueOf(p.get(count)) + resolver.substring(pos + 1, resolver.length());
                         count++;
                     }
-                    System.out.println(resolver);
                     mt.setValor(calc.calcular(resolver));
                 }
             }
@@ -200,11 +201,66 @@ public class CMain implements IMain {
         PdfWriter.getInstance(doc, new FileOutputStream("reporte.pdf"));
         doc.open();
 
-        Paragraph titulo = new Paragraph("INFORME DE RESULTADOS", FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD));
+        Paragraph titulo = new Paragraph("INFORME DE RESULTADOS\n\n", FontFactory.getFont(FontFactory.TIMES_BOLD, 18, Font.BOLD));
         titulo.setAlignment(Element.ALIGN_CENTER);
         doc.add(titulo);
         
+        Paragraph texto = new Paragraph("Modelo de Calidad: " + m.getNombreModelo(), FontFactory.getFont(FontFactory.TIMES_BOLD, 13, Font.PLAIN));
+        doc.add(texto);
         
+        Paragraph parrafo = new Paragraph("");
+        switch(i)
+        {
+            case 0:
+                parrafo = new Paragraph("Es un estándar internacional para la evaluación de la calidad del software. Considerando las siguientes características: Funcionalidad, Fiabilidad, Usabilidad, Eficiencia, Mantenibilidad y Portabilidad.\n\n",  FontFactory.getFont(FontFactory.TIMES, 13, Font.PLAIN));
+                break;
+            case 1:
+                parrafo = new Paragraph("Se focaliza en el producto final identificando atributos claves desde el punto de vista del cliente. Estos atributos se denominan factores de calidad.\n\n",  FontFactory.getFont(FontFactory.TIMES, 13, Font.PLAIN));
+                break;
+            case 2:
+                parrafo = new Paragraph("Basado en la norma ISO9126 y la IEC, especifica características para la calidad interna, externa y de uso. \n\n",  FontFactory.getFont(FontFactory.TIMES, 13, Font.PLAIN));
+                break;
+        
+        }
+        
+        doc.add(parrafo);
+        
+        Paragraph fecha = new Paragraph("Fecha: " + (new Date().toString()), FontFactory.getFont(FontFactory.TIMES_BOLD, 13, Font.PLAIN));
+        doc.add(fecha);
+        
+        
+        for(int j = 0; j < m.getCaracteristicas().size(); j++)
+        {
+            Caracteristica c = m.getCaracteristicas().get(j);
+            
+            Paragraph caracteristica = new Paragraph((j + 1) + ". CARACTERISTICA: " + c.getNombreCaracteristica() + "\n\n", FontFactory.getFont(FontFactory.TIMES_BOLD, 13, Font.PLAIN) );
+            doc.add(caracteristica);
+            for(int k = 0; k < c.getSubcaracteristicas().size(); k++)
+            {
+                SubCaracteristica s = c.getSubcaracteristicas().get(k);
+                
+                Paragraph subcaracteristica = new Paragraph((j + 1) + "." + (k + 1) + ". SUBCARACTERISTICA: " + s.getNombreSubCaracteristica()  + "\n\n", FontFactory.getFont(FontFactory.TIMES, 13, Font.PLAIN) );
+                doc.add(subcaracteristica);
+                
+                PdfPTable tabla = new PdfPTable(4);
+                tabla.addCell("Nombre de la Metrica");
+                tabla.addCell("Propósito");
+                tabla.addCell("Valor Referencial");
+                tabla.addCell("Valor Obtenido");
+                
+                for(int l = 0; l < s.getMetricas().size(); l++)
+                {
+                    Metrica mt = s.getMetricas().get(l);
+
+                    tabla.addCell(mt.getNombreMetrica());
+                    tabla.addCell(mt.getProposito());
+                    tabla.addCell(String.valueOf(mt.getValorOptimo()));
+                    tabla.addCell(mt.getValor());
+                }
+                
+                doc.add(tabla);
+            }
+        }
 
 
         doc.close();
