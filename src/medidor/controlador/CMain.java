@@ -16,6 +16,9 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import javax.swing.JTextArea;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 import medidor.modelo.Caracteristica;
 import medidor.modelo.Metrica;
 import medidor.modelo.Modelo;
@@ -156,13 +159,13 @@ public class CMain implements IMain{
                 if(count == 27)
                 {
                     linea5 = linea5.substring(linea5.indexOf("checkpoint_files") + 18, linea5.length() - 2);
-                    p.add(new Parametro(2, Integer.parseInt(linea5)));
+                    p.add(new Parametro(2, Double.parseDouble(linea5)));
                 }
                 
                 if(count == 29)
                 {
                     linea5 = linea5.substring(linea5.indexOf("M0") + 4, linea5.lastIndexOf("<"));
-                    p.add(new Parametro(3, Integer.parseInt(linea5)));
+                    p.add(new Parametro(3, Double.parseDouble(linea5)));
                 }
                 count++;
             }
@@ -183,21 +186,60 @@ public class CMain implements IMain{
                 if(count2 == 61)
                 {
                     linea2 = linea2.substring(linea2.lastIndexOf(",")+1, linea2.length());
-                    p.add(new Parametro(5, Integer.parseInt(linea2)));
+                    p.add(new Parametro(5, Double.parseDouble(linea2)));
                 }
                 
                 count2++;
             }
             
+            /* KW */
+            Workbook workbook4 = Workbook.getWorkbook(new File("resultados_KW.xls"));
+            Sheet sheet4 = workbook4.getSheet(0);
             
+            String linea4;
             
-            //jlist.getSelectedIndex();
+            for (int i = 1; i < sheet4.getRows(); i++)
+            {
+                    linea4 = sheet4.getCell(2, i).getContents();
+                    p.add(new Parametro(5 + i, Double.parseDouble(linea4)));
+            }
             
-   
+            /* SQ */
+            
+            Workbook workbook6 = Workbook.getWorkbook(new File("resultados_SQ.xls"));
+            Sheet sheet6 = workbook6.getSheet(0);
+            
+            String linea6;
+            
+            for (int i = 1; i < sheet6.getRows(); i++)
+            {
+                    linea6 = sheet6.getCell(2, i).getContents();
+                    p.add(new Parametro(21 + i, Double.parseDouble(linea6)));
+            }
+            
+            /* MA */
+            
+            Workbook workbook3 = Workbook.getWorkbook(new File("resultados_MA.xls"));
+            Sheet sheet3 = workbook3.getSheet(0);
+            
+            String linea3;
+            
+            for (int i = 1; i < sheet3.getRows(); i++)
+            {
+                    linea3 = sheet3.getCell(2, i).getContents();
+                    p.add(new Parametro(21 + i, Double.parseDouble(linea3)));
+            }
+            
+            for(int i = 0; i < p.size(); i++)
+            {
+                System.out.println(p.get(i).toString());
+            }
         }
         catch(IOException e)
         {
             JOptionPane.showMessageDialog(null, "Uno o más archivos solicitados no existen.", "Error", ERROR_MESSAGE);
+        } catch (BiffException ex) {
+            Logger.getLogger(CMain.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally
         { 
