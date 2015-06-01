@@ -26,14 +26,18 @@ public class UIMain extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        btnCalidad.setBackground(new java.awt.Color(32, 98, 176));
         btnCalidad.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
+        btnCalidad.setForeground(new java.awt.Color(255, 255, 255));
         btnCalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/medidor2.png"))); // NOI18N
         btnCalidad.setText("MEDICIÓN DE CALIDAD");
-        btnCalidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 2, true));
+        btnCalidad.setBorder(null);
+        btnCalidad.setBorderPainted(false);
         btnCalidad.setContentAreaFilled(false);
         btnCalidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCalidad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCalidad.setIconTextGap(-3);
+        btnCalidad.setOpaque(true);
         btnCalidad.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/medidor3.png"))); // NOI18N
         btnCalidad.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/medidor1.png"))); // NOI18N
         btnCalidad.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -44,14 +48,18 @@ public class UIMain extends javax.swing.JFrame {
             }
         });
 
+        btnRiesgos.setBackground(new java.awt.Color(32, 98, 176));
         btnRiesgos.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
+        btnRiesgos.setForeground(new java.awt.Color(255, 255, 255));
         btnRiesgos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/risk2.png"))); // NOI18N
         btnRiesgos.setText("GESTIÓN DE RIESGOS");
-        btnRiesgos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 2, true));
+        btnRiesgos.setBorder(null);
+        btnRiesgos.setBorderPainted(false);
         btnRiesgos.setContentAreaFilled(false);
         btnRiesgos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRiesgos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnRiesgos.setIconTextGap(-3);
+        btnRiesgos.setOpaque(true);
         btnRiesgos.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/risk3.png"))); // NOI18N
         btnRiesgos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/risk1.png"))); // NOI18N
         btnRiesgos.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -62,15 +70,19 @@ public class UIMain extends javax.swing.JFrame {
             }
         });
 
+        btnDimens.setBackground(new java.awt.Color(32, 98, 176));
         btnDimens.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
+        btnDimens.setForeground(new java.awt.Color(255, 255, 255));
         btnDimens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/dim2.png"))); // NOI18N
         btnDimens.setText("DIMENSIONAMIENTO");
         btnDimens.setAutoscrolls(true);
-        btnDimens.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 2, true));
+        btnDimens.setBorder(null);
+        btnDimens.setBorderPainted(false);
         btnDimens.setContentAreaFilled(false);
         btnDimens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDimens.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDimens.setIconTextGap(-3);
+        btnDimens.setOpaque(true);
         btnDimens.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/dim3.png"))); // NOI18N
         btnDimens.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/dim1.png"))); // NOI18N
         btnDimens.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -84,15 +96,19 @@ public class UIMain extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("<Nombre del Software>");
 
+        btnNorma.setBackground(new java.awt.Color(32, 98, 176));
         btnNorma.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        btnNorma.setForeground(new java.awt.Color(255, 255, 255));
         btnNorma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ntp2.png"))); // NOI18N
         btnNorma.setText("NORMA TÉCNICA PERUANA");
-        btnNorma.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 2, true));
+        btnNorma.setBorder(null);
+        btnNorma.setBorderPainted(false);
         btnNorma.setContentAreaFilled(false);
         btnNorma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNorma.setDefaultCapable(false);
         btnNorma.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNorma.setIconTextGap(-3);
+        btnNorma.setOpaque(true);
         btnNorma.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ntp3.png"))); // NOI18N
         btnNorma.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ntp1.png"))); // NOI18N
         btnNorma.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
@@ -109,29 +125,29 @@ public class UIMain extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnDimens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnCalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                        .addGap(31, 31, 31)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnNorma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRiesgos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnRiesgos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNorma, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
+                        .addGap(86, 86, 86)
                         .addComponent(jLabel1)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnRiesgos, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                    .addComponent(btnRiesgos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnNorma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDimens, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(35, 35, 35))
+                    .addComponent(btnDimens, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                    .addComponent(btnNorma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
