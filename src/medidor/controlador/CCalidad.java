@@ -43,10 +43,10 @@ public class CCalidad implements ICalidad {
     private UICalidad ventanaCalidad;
     private ArrayList<Modelo> modelos;
 
-    public CCalidad(ArrayList<Modelo> modelos) throws SQLException {
-        conexion();
+    public CCalidad() throws SQLException {
         ventanaCalidad = new UICalidad(this);
-        this.modelos = modelos;
+        this.modelos = new ArrayList<Modelo> ();
+        conexion();
     }
 
     public void mostrarDescripcion(JList jlist, JTextArea jtextarea) {

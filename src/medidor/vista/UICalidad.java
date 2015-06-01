@@ -35,7 +35,7 @@ public class UICalidad extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Medidor de Calidad");
-        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/recursos/icon.png")).getImage());
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/recursos/medidor1.png")).getImage());
 
         lblTitulo.setFont(new java.awt.Font("Cambria", 1, 32)); // NOI18N
         lblTitulo.setText("MEDIDOR DE CALIDAD");

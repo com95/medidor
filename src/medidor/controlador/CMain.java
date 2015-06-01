@@ -1,6 +1,10 @@
 
 package medidor.controlador;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 import medidor.vista.UIMain;
 
 public class CMain implements IMain {
@@ -14,7 +18,13 @@ public class CMain implements IMain {
     }
     
     public void mostrarMedidorCalidad() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            CCalidad calidad = new CCalidad();
+            ventanaPrincipal.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(CMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     public void mostrarDimensionamiento() {
