@@ -26,11 +26,10 @@ public class UIMain extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnCalidad.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        btnCalidad.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
         btnCalidad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/medidor2.png"))); // NOI18N
         btnCalidad.setText("MEDICIÓN DE CALIDAD");
-        btnCalidad.setBorder(null);
-        btnCalidad.setBorderPainted(false);
+        btnCalidad.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 2, true));
         btnCalidad.setContentAreaFilled(false);
         btnCalidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCalidad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -45,11 +44,10 @@ public class UIMain extends javax.swing.JFrame {
             }
         });
 
-        btnRiesgos.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        btnRiesgos.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
         btnRiesgos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/risk2.png"))); // NOI18N
         btnRiesgos.setText("GESTIÓN DE RIESGOS");
-        btnRiesgos.setBorder(null);
-        btnRiesgos.setBorderPainted(false);
+        btnRiesgos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 2, true));
         btnRiesgos.setContentAreaFilled(false);
         btnRiesgos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRiesgos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -64,7 +62,19 @@ public class UIMain extends javax.swing.JFrame {
             }
         });
 
-        btnDimens.setText("Dimensionamiento");
+        btnDimens.setFont(new java.awt.Font("Arial Narrow", 1, 16)); // NOI18N
+        btnDimens.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/dim2.png"))); // NOI18N
+        btnDimens.setText("DIMENSIONAMIENTO");
+        btnDimens.setAutoscrolls(true);
+        btnDimens.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 2, true));
+        btnDimens.setContentAreaFilled(false);
+        btnDimens.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDimens.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDimens.setIconTextGap(-3);
+        btnDimens.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/dim3.png"))); // NOI18N
+        btnDimens.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/dim1.png"))); // NOI18N
+        btnDimens.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnDimens.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnDimens.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDimensActionPerformed(evt);
@@ -74,7 +84,19 @@ public class UIMain extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("<Nombre del Software>");
 
-        btnNorma.setText("jButton1");
+        btnNorma.setFont(new java.awt.Font("Arial Narrow", 1, 14)); // NOI18N
+        btnNorma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ntp2.png"))); // NOI18N
+        btnNorma.setText("NORMA TÉCNICA PERUANA");
+        btnNorma.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 255), 2, true));
+        btnNorma.setContentAreaFilled(false);
+        btnNorma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNorma.setDefaultCapable(false);
+        btnNorma.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNorma.setIconTextGap(-3);
+        btnNorma.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ntp3.png"))); // NOI18N
+        btnNorma.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/ntp1.png"))); // NOI18N
+        btnNorma.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnNorma.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -84,32 +106,32 @@ public class UIMain extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnDimens, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnNorma, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRiesgos, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnDimens, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCalidad, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnNorma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRiesgos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
+                        .addGap(96, 96, 96)
                         .addComponent(jLabel1)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnRiesgos, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCalidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRiesgos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnDimens, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                    .addComponent(btnNorma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnNorma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDimens, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
 
         pack();
