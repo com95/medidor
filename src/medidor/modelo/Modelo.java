@@ -1,5 +1,7 @@
 /* CAMBIO */
-/*NUEVO CAMBIO COM95*/
+/*NUEVO CAMBIO COM95
+
+asdad*/
 package medidor.modelo;
 
 import java.util.ArrayList;
